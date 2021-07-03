@@ -30,7 +30,11 @@ void log_verbose() {_level = LOG_LEVEL_INFO;}
 
 
 void log_progress(uint16_t count, uint16_t total, const char *prefix) {
+  static int16_t last = -1;
   uint8_t fill = (uint8_t)(PROGRESS_BAR_LENGTH * count / total);
+
+  if (fill == last) return;
+  last = fill;
 
   printf("\r%s [", prefix);
 
