@@ -174,7 +174,7 @@ static bool parse_args(int argc, char *argv[], args_t *args) {
     }
   }
 
-  if (strlen(args->port) == 0) {
+  if (!args->port || strlen(args->port) == 0) {
     LOG_ERROR("Port name missing");
     return false;
   }
